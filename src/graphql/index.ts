@@ -1,10 +1,10 @@
 import { ApolloServer } from "@apollo/server";
-import { prismaClient } from "../lib/db";
 import Users from "./user";
 
 export default async function createApolloGraphqlServer() {
   const gqlServer = new ApolloServer({
     typeDefs: `#graphql
+        ${Users.typedef}
         type Query { 
           ${Users.queries}
         }

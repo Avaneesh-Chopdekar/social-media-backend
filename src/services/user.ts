@@ -63,4 +63,12 @@ export default class UserService {
 
     return token;
   }
+
+  public static decodeJwtToken(token: string) {
+    return JWT.verify(token, process.env.SECRET!);
+  }
+
+  public static getUserById(id: string) {
+    return prismaClient.user.findUnique({ where: { id } });
+  }
 }
